@@ -1,0 +1,61 @@
+<head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+<body>
+<h2>Product Details</h2>
+
+<div *ngIf="selectedMask">
+  <h3>{{( selectedMask | async)?.name}}</h3>
+
+  <div><span class="inline-title">Product Name:</span> {{( selectedMask | async)?.name}}</div>
+  <div><span class="inline-title">Price:</span> {{( selectedMask | async)?.price}}</div>
+  <div><span class="inline-title">Size(Adult/Kids):</span> {{( selectedMask | async)?.size}}</div>
+  <div><span class="inline-title">Description:</span> {{( selectedMask | async)?.description}}</div>
+
+</div>
+</body>
+
+<!--
+<div class="title">Key Items</div>
+  <table class="table table-striped">
+    <tr *ngFor="let day of (selectedAuction | async)?.items">
+      <td>{{day}}</td>
+    </tr>
+  </table>
+
+
+    <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Cars</th>
+      <th scope="col">Collectables</th>
+      <th scope="col">Decor</th>
+      <th scope="col">Glassware</th>
+      <th scope="col">Signage</th>
+      <th scope="col">Firearms</th>
+      <th scope="col">Misc</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let day of (selectedAuction | async)?.items">
+        <td>{{day}}</td>
+      </tr>
+    </tbody>
+  </table>
+-->
