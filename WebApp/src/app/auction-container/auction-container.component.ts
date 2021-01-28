@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+
 import {Mask, MaskDataService} from '../mask-data.service';
+
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
@@ -15,6 +17,7 @@ export class AuctionContainerComponent implements OnInit {
 
   constructor(
     private maskDataService: MaskDataService,
+
     private router: Router,
     private route: ActivatedRoute,
   ) { }
@@ -23,6 +26,7 @@ export class AuctionContainerComponent implements OnInit {
     this.selectedMask = this.route.paramMap.pipe(
       switchMap((params: ParamMap): Observable<Mask> => {
         return this.maskDataService.getMask(params.get('name'));
+
       })
     );
   }
@@ -30,6 +34,7 @@ export class AuctionContainerComponent implements OnInit {
   public selectAuction(name: string): void {
     this.selectedMask = this.maskDataService.getMask(name);
     if (!this.selectedMask) {
+
       this.router.navigateByUrl('/notfound');
     }
   }

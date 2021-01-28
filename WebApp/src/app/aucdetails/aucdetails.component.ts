@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import {MaskDataService} from '../mask-data.service';
+
+
 import {Observable} from 'rxjs';
 
 @Component({
@@ -9,6 +12,7 @@ import {Observable} from 'rxjs';
 })
 export class AucdetailsComponent implements OnInit {
 
+
   maskNames: Observable<string[]>;
 
   constructor(
@@ -17,6 +21,7 @@ export class AucdetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.maskNames = this.maskDataService.getMaskName();
+
   }
 
 }

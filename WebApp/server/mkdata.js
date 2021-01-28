@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const Mask = require('./lib/models/mask');
 
 const Bw = new Mask({
@@ -29,6 +30,7 @@ const Rd = new Mask({
   price: "10",
   size: "Adult",
   description: "Red mask"
+
 });
 
 mongoose.connect('mongodb://localhost:27017/ProjectWebApp', {useNewUrlParser: true, useUnifiedTopology: true});
@@ -37,3 +39,4 @@ Bw.save().catch(err => console.error(err)).then(() => { console.log('saved bw') 
 Wh.save().catch(err => console.error(err)).then(() => { console.log('saved wh') });
 Gr.save().catch(err => console.error(err)).then(() => { console.log('saved gr') });
 Rd.save().catch(err => console.error(err)).then(() => { console.log('saved rd') });
+
