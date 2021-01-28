@@ -1,13 +1,17 @@
 const express = require('express');
-const auctions = require('./controllers/auctions');
+
+const masks = require('./controllers/masks');
+
 
 
 let routes = express.Router();
 
-routes.route('/auctions')
-  .get(auctions.root)
 
-routes.route('/auctions/:date')
-  .get(auctions.byAuction)
+routes.route('/masks')
+  .get(masks.root)
+
+routes.route('/masks/:name')
+  .get(masks.byMask)
+
 
 module.exports = routes;

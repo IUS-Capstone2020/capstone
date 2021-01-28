@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {Auction, AuctionDataService} from '../auction-data.service';
+
+import {Mask, MaskDataService} from '../mask-data.service';
+
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
@@ -10,26 +12,29 @@ import {switchMap} from 'rxjs/operators';
   styleUrls: ['./auction-container.component.css']
 })
 export class AuctionContainerComponent implements OnInit {
-  selectedAuctionDate: string;
-  selectedAuction: Observable<Auction>;
+  selectedMaskName: string;
+  selectedMask: Observable<Mask>;
 
   constructor(
-    private auctionDataService: AuctionDataService,
+    private maskDataService: MaskDataService,
+
     private router: Router,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.selectedAuction = this.route.paramMap.pipe(
-      switchMap((params: ParamMap): Observable<Auction> => {
-        return this.auctionDataService.getAuction(params.get('date'));
+    this.selectedMask = this.route.paramMap.pipe(
+      switchMap((params: ParamMap): Observable<Mask> => {
+        return this.maskDataService.getMask(params.get('name'));
+
       })
     );
   }
 
   public selectAuction(name: string): void {
-    this.selectedAuction = this.auctionDataService.getAuction(name);
-    if (!this.selectedAuction) {
+    this.selectedMask = this.maskDataService.getMask(name);
+    if (!this.selectedMask) {
+
       this.router.navigateByUrl('/notfound');
     }
   }

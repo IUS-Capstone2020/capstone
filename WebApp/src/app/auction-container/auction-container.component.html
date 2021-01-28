@@ -18,26 +18,30 @@
   </style>
 </head>
 <body>
-<h2> Upcoming Auctions</h2>
 
-<div *ngIf="selectedAuction">
-  <h3>{{( selectedAuction | async)?.date}} @ {{( selectedAuction | async)?.address}}</h3>
+<h2>Product Details</h2>
 
-  <div><span class="inline-title">Company:</span> {{( selectedAuction | async)?.company}}</div>
-  <div><span class="inline-title">Auctioneer:</span> {{( selectedAuction | async)?.auctioneer}}</div>
-  <div><span class="inline-title">Contact:</span> {{( selectedAuction | async)?.contact}}</div>
-  <div><span class="inline-title">Time:</span> {{( selectedAuction | async)?.time}}</div>
+<div *ngIf="selectedMask">
+  <h3>{{( selectedMask | async)?.name}}</h3>
 
-  <div class="title">Key Items</div>
+  <div><span class="inline-title">Product Name:</span> {{( selectedMask | async)?.name}}</div>
+  <div><span class="inline-title">Price:</span> {{( selectedMask | async)?.price}}</div>
+  <div><span class="inline-title">Size(Adult/Kids):</span> {{( selectedMask | async)?.size}}</div>
+  <div><span class="inline-title">Description:</span> {{( selectedMask | async)?.description}}</div>
+
+</div>
+</body>
+
+<!--
+<div class="title">Key Items</div>
+
   <table class="table table-striped">
     <tr *ngFor="let day of (selectedAuction | async)?.items">
       <td>{{day}}</td>
     </tr>
   </table>
-</div>
-</body>
 
-<!--
+
     <table class="table table-striped">
     <thead>
     <tr>
