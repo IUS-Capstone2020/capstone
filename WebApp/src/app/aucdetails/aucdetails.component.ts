@@ -20,3 +20,5 @@ export class AucdetailsComponent implements OnInit {
   }
 
 }
+/*
+ */

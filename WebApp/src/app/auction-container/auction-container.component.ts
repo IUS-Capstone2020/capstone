@@ -61,5 +61,4 @@ export class AuctionContainerComponent implements OnInit {
        this.selectedAuction = auction;
        console.log(auction.date);
      }
-}
 */
