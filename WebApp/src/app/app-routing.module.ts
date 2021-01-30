@@ -11,12 +11,11 @@ import {AuctionContainerComponent} from './auction-container/auction-container.c
 
 const routes: Routes = [
   { path: 'homepage', component: HomepageComponent },
-
-  { path: 'masks', component: AucdetailsComponent },
-  {path: 'masks/:name', component: AuctionContainerComponent},
+  { path: 'auctions', component: AucdetailsComponent },
+  {path: 'auctions/:date', component: AuctionContainerComponent},
   { path: 'contactus', component: ContactUsComponent },
   { path: 'aboutus', component: AboutUsComponent },
-
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

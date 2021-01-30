@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import {MaskDataService} from '../mask-data.service';
-
-
+import {AuctionDataService} from '../auction-data.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -12,16 +9,14 @@ import {Observable} from 'rxjs';
 })
 export class AucdetailsComponent implements OnInit {
 
-
-  maskNames: Observable<string[]>;
+  auctionDates: Observable<string[]>;
 
   constructor(
-    private maskDataService: MaskDataService
+    private auctionDataService: AuctionDataService
   ) { }
 
   ngOnInit(): void {
-    this.maskNames = this.maskDataService.getMaskName();
-
+    this.auctionDates = this.auctionDataService.getAuctionDate();
   }
 
 }
