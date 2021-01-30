@@ -15,7 +15,7 @@ export class RatingStarsComponent implements OnInit {
 }
 export class NgbdRatingConfig {
   constructor(config: NgbRatingConfig) {
-    // customize default values of ratings used by this component tree
+    // customize default valuesof ratings used by this component tree
     config.max = 5;
     config.readonly = true;
   }
