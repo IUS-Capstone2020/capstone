@@ -1,11 +1,7 @@
 <div>
-
-  <h1>Masks</h1>
-  <ul *ngFor="let name of (maskNames | async)">
-    <li><a [routerLink]="['/masks', name]">{{name}}</a></li>
+  <h1>Auctions</h1>
+  <ul *ngFor="let name of (auctionDates | async)">
+    <li><a [routerLink]="['/auctions', name]">{{name}}</a></li>
   </ul>
 </div>
-
-
-//pulls name
 
