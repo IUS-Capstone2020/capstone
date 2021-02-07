@@ -1,4 +1,4 @@
-# P422 Project Stroud's Auction Service
+# P422 Project Stroud's Mask Service
 
 Here, you should put your project proposal. It should be written in english text and describe what you intend to build along with any information necessary. Please use proper markdown formatting. You can find a guide here: [Mastering Markdown](https://guides.github.com/features/mastering-markdown/).
 
@@ -9,7 +9,7 @@ Your project should have the following requirements met:
 * At least four different interactive views for the client
 
 You may choose whatever kind of project you like within the ethical guidlines of the university. Commit your propasal to this file and we will discuss your project idea if it needs improvement.
-<h1>Stroud's Auction Service</h1>>
+<h1>Stroud's Mask Service</h1>>
 
 <p>
 My project will be redoing an idea I had in the past for my cousins auction service. He wants an online front to advertise and share for his auctions. This site will show the upcoming auctions with pictures and information about the sale.

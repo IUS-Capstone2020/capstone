@@ -1,59 +1,86 @@
 const mongoose = require('mongoose');
-const Auction = require('./lib/models/auction');
+const Mask = require('./lib/models/mask');
 
-const Mill = new Auction({
-  section:'Mill',
-  company: 'STROUDS AUCTION SERVICE LLC',
-  auctioneer: 'Eric Stroud',
-  contact: '8129722499',
-  address: 'Old Mill St',
-  time: '10am',
-  date: '10-31-20',
-  items: ['Cars: 69 Roadrunner', 'Collectables: Coca-Cola ',
-  'Decor: Barn wood', 'Glass: Fine China', 'Signage: Shell and Texaco Signs', 'Firearms: None', 'Misc: Much More',
-  'Cars: 1992 Ford Mustang 5.0', 'Collectables: GI JOE', 'Decor: Farmhouse', 'Glass: USA Pottery', 'Signage: Theater X Signage', 'Firearms: None', 'Misc: Much More',
-  ]
+const M10 = new Mask({
+  id: '10',
+  name: 'Mask10',
+  price : '$19.99'
 });
-
-
-
-const Eagle = new Auction({
-  section:'Eagle',
- company: 'STROUDS AUCTION SERVICE LLC',
-    auctioneer: 'Eric Stroud',
-    contact: '8129722499',
-   address: 'Eagle Court',
-    time: '9am',
-  date: '1-2-21',
-    items: ['Cars: None', 'Collectables: Pepsi Co',
-  'Decor: Basic Home Shit', 'Glass: N/A', 'Signage: Coke Signs', 'Firearms: Remington 870 Wingmaster', 'Misc: Much More']
+const M9 = new Mask({
+  id: '9',
+  name: 'Mask9',
+  price : '$19.99'
 });
-const Floyd = new Auction({
-  section:'Floyd',
-  company: 'STROUDS AUCTION SERVICE LLC',
-  auctioneer: 'Eric Stroud',
-  contact: '8129722499',
-  address: 'Floyd Co Impound',
-  time: '10am',
-  date: '2-6-21',
-  items: ['Cars: 2005 Ford FiveHundred', 'Collectables: Beanie Babies',
-    'Decor: ArtDeco', 'Glass: Glassware for Youngins', 'Signage: Neon Signs', 'Firearms: Tommy Gun', 'Misc: Much More']
+const M8 = new Mask({
+  id: '8',
+  name: 'Mask8',
+  price : '$19.99'
 });
-const Crawford = new Auction({
-  section:'Crawford',
-  company: 'STROUDS AUCTION SERVICE LLC',
-  auctioneer: 'Eric Stroud',
-  contact: '8129722499',
-  address: 'Crawford Lane',
-  time: '8:30am',
-  date: '3-6-21',
-  items: ['Cars: 78 Chevy C10', 'Collectables: Grandmas Favorite Rocks',
-    'Decor: FarmHouse', 'Glass: Made in USA Pottery', 'Signage: Oil Company and Local Signage', 'Firearms: Typical Redneck Shit', 'Misc: Much More']
+const M7 = new Mask({
+  id: '7',
+  name: 'Mask7',
+  price : '$19.99'
+});
+const M6 = new Mask({
+  id: '6',
+  name: 'Mask6',
+  price : '$19.99'
+});
+const M5 = new Mask({
+  id: '5',
+  name: 'Mask5',
+  price : '$19.99'
+});
+const M4 = new Mask({
+  id: '4',
+  name: 'Mask4',
+  price : '$19.99'
+});
+const M3 = new Mask({
+  id: '3',
+  name: 'Mask3',
+  price : '$19.99'
+});
+const M2 = new Mask({
+  id: '2',
+  name: 'Mask2',
+  price : '$19.99'
+});
+const M1 = new Mask({
+  id: '1',
+  name: 'Mask1',
+  price : '$19.99'
 });
 
 mongoose.connect('mongodb://localhost:27017/ProjectWebApp', {useNewUrlParser: true, useUnifiedTopology: true});
 
-Mill.save().catch(err => console.error(err)).then(() => { console.log('saved mill') });
-Eagle.save().catch(err => console.error(err)).then(() => { console.log('saved eagle') });
-Floyd.save().catch(err => console.error(err)).then(() => { console.log('saved floyd') });
-Crawford.save().catch(err => console.error(err)).then(() => { console.log('saved crawford') });
+M1.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M1')
+});
+M2.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M2')
+});
+M3.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M3')
+});
+M4.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M4')
+});
+M5.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M5')
+});
+M6.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M6')
+});
+M7.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M7')
+});
+M8.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M8')
+});
+M9.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M9')
+});
+M10.save().catch(err => console.error(err)).then(() => {
+  console.log('saved M10')
+});

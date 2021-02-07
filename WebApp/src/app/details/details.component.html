@@ -1,0 +1,17 @@
+<!--<div>
+  <ul *ngFor="let name of (maskNames | async)">
+    <a [routerLink]="['/masks', name]">{{name}}</a>
+  </ul>
+</div>-->
+
+<div class="w3-row w3-grayscale">
+  <ul *ngFor="let name of (maskNames | async)">
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="/assets/slothsarefar.jpg" style="width:100%">
+        <a [routerLink]="['/masks', name]">{{name}}</a>
+      </div>
+    </div>
+  </ul>
+</div>
+
