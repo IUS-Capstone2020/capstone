@@ -1,0 +1,27 @@
+<head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+<body>
+
+<div *ngIf="selectedMask">
+  <h3>{{(selectedMask | async)?.name}}</h3>
+  <div><span class="inline-title">Name:</span> {{(selectedMask | async)?.name}}</div>
+  <div><span class="inline-title">Price:</span> {{(selectedMask | async)?.price}}</div>
+</div>
+</body>

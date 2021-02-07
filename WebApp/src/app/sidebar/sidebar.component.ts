@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {AUCTIONS} from '../data/auctions';
-import {Auction} from '../models/Auction';
+import {Component, OnInit} from '@angular/core';
+import {Mask} from '../models/Mask';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,18 +7,22 @@ import {Auction} from '../models/Auction';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  auctions = AUCTIONS;
-  selectedAuction: Auction;
+  selectedMask: Mask;
   active = 'top';
-  constructor() { }
+
+  constructor() {
+  }
+
   ngOnInit(): void {
   }
-  onSelect(auction: Auction ) {
-    if (this.selectedAuction && this.selectedAuction.date === auction.date){
-      this.selectedAuction = null;
+
+  // tslint:disable-next-line:typedef
+  onSelect(mask: Mask) {
+    if (this.selectedMask && this.selectedMask.name === mask.name) {
+      this.selectedMask = null;
       return;
     }
-    this.selectedAuction = auction;
-    console.log(auction.date);
+    this.selectedMask = mask;
+    console.log(mask.name);
   }
 }

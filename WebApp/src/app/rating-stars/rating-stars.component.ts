@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,11 +8,13 @@ import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class RatingStarsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 }
+
 export class NgbdRatingConfig {
   constructor(config: NgbRatingConfig) {
     // customize default values of ratings used by this component tree
