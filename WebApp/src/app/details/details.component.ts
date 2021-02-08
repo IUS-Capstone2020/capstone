@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../data.service';
+import {DataService, Mask} from '../data.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -19,5 +19,4 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.maskNames = this.dataService.getMaskName();
   }
-
 }

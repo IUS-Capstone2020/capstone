@@ -4,14 +4,16 @@
   </ul>
 </div>-->
 
-<div class="w3-row w3-grayscale">
-  <ul *ngFor="let name of (maskNames | async)">
+<div class="w3-row">
+  <ul *ngFor="let name of (maskNames | async) let i = index">
     <div class="w3-col l3 s6">
       <div class="w3-container">
-        <img src="/assets/slothsarefar.jpg" style="width:100%">
+        <img src="/assets/masks/{{i + 1}}/front.jpg" style="width:100%">
         <a [routerLink]="['/masks', name]">{{name}}</a>
       </div>
     </div>
   </ul>
 </div>
+
+
 

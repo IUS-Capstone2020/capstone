@@ -15,7 +15,7 @@ module.exports = {
       res.json(ret);
     })
   },
-  byMask: (req, res) => {
+  byMaskName: (req, res) => {
     const section = req.params.name;
 
     Mask.findOne().bySection(section).exec((err, klass) => {

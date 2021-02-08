@@ -21,7 +21,43 @@
 
 <div *ngIf="selectedMask">
   <h3>{{(selectedMask | async)?.name}}</h3>
-  <div><span class="inline-title">Name:</span> {{(selectedMask | async)?.name}}</div>
+  <div class="slideshow-container">
+    <img src="/assets/masks/{{(selectedMask | async)?.id}}/front.jpg" style="width:50%">
+  </div>
   <div><span class="inline-title">Price:</span> {{(selectedMask | async)?.price}}</div>
 </div>
+
+<!--
+
+<div *ngIf="selectedMask">
+  <h3>{{(selectedMask | async)?.name}}</h3>
+  <div class="slideshow-container">
+
+    &lt;!&ndash; Full-width images with number and caption text &ndash;&gt;
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="/assets/masks/{{(selectedMask | async)?.id}}/front.jpg" style="width:50%">
+      <div class="text">Caption Text</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="/assets/masks/{{(selectedMask | async)?.id}}/side.jpg" style="width:50%">
+      <div class="text">Caption Two</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="/assets/masks/{{(selectedMask | async)?.id}}/back.jpg" style="width:50%">
+      <div class="text">Caption Three</div>
+    </div>
+
+    &lt;!&ndash; Next and previous buttons &ndash;&gt;
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <div><span class="inline-title">Price:</span> {{(selectedMask | async)?.price}}</div>
+</div>-->
+
+
 </body>

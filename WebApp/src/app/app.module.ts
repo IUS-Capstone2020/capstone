@@ -24,7 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
     HomepageComponent,
     ContactUsComponent,
     AboutUsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
