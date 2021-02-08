@@ -1,3 +1,4 @@
+/*
 import {Mask} from '../models/Mask';
 
 export const Masks: Mask[] = [
@@ -13,3 +14,4 @@ export const Masks: Mask[] = [
   {id: '10', name: 'Mask10', price: '$19.99'}
 ];
 
+*/

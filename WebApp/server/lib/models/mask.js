@@ -8,7 +8,8 @@ const MaskSchema = mongoose.Schema({
   },*/
   id: String,
   name: String,
-  price: String
+  price: String,
+  img: String
 });
 
 
