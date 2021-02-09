@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Mask, DataService} from '../data.service';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
+import {NgbCarousel, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-auction-container',
@@ -16,7 +17,12 @@ export class ContainerComponent implements OnInit {
     private dataService: DataService,
     private router: Router,
     private route: ActivatedRoute,
+    config: NgbCarouselConfig
   ) {
+    config.interval = 2000;
+    config.wrap = true;
+    config.keyboard = false;
+    config.pauseOnHover = false;
   }
 
   ngOnInit(): void {
