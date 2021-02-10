@@ -1,7 +1,5 @@
 <div class='container-fluid'>
   <div class="row" style="padding: 20px;">
-    <div class="col-sm-12 btn btn-success">
-    </div>
   </div>
   <div *ngIf="selectedMask" class='col-12'>
     <h2>{{(selectedMask | async)?.name}}</h2>
@@ -24,7 +22,8 @@
     </ngb-carousel>
   </div>
   <div><span class="inline-title">Price:</span> {{(selectedMask | async)?.price}}</div>
-
+  <div><span class="inline-title">Description:</span> {{(selectedMask | async)?.description}}</div>
+  <div><span class="inline-title">Fit:</span> {{(selectedMask | async)?.fit}}</div>
   </div>
 
 
