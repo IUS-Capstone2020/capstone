@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'masks/:name', component: ContainerComponent},
   {path: 'contactus', component: ContactUsComponent},
   {path: 'aboutus', component: AboutUsComponent},
+  {path: '**', redirectTo: '/homepage'}
 ];
 
 @NgModule({
