@@ -6,6 +6,8 @@ export class Mask {
   id: string;
   name: string;
   price: string;
+  description: string;
+  fit: string;
 }
 
 @Injectable({
