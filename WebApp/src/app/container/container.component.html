@@ -2,7 +2,7 @@
   <div class="row" style="padding: 20px;">
   </div>
   <div *ngIf="selectedMask" class='col-12'>
-    <h2>{{(selectedMask | async)?.name}}</h2>
+    <h2><b>{{(selectedMask | async)?.name}}</b></h2>
     <ngb-carousel>
       <ng-template ngbSlide>
         <img src="/assets/masks/{{(selectedMask | async)?.id}}/front.jpg" style="width:50%">
@@ -21,9 +21,9 @@
       </ng-template>
     </ngb-carousel>
   </div>
-  <div><span class="inline-title">Price:</span> {{(selectedMask | async)?.price}}</div>
-  <div><span class="inline-title">Description:</span> {{(selectedMask | async)?.description}}</div>
-  <div><span class="inline-title">Fit:</span> {{(selectedMask | async)?.fit}}</div>
+  <div><span class="inline-title"><b>Price:</b></span> <i>{{(selectedMask | async)?.price}}</i></div>
+  <div><span class="inline-title"><b>Description:</b></span> {{(selectedMask | async)?.description}}</div>
+  <div><span class="inline-title"><b>Fit:</b></span> {{(selectedMask | async)?.fit}}</div>
   </div>
 
 
