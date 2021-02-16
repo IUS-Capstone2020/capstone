@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "price": 1.99,
+    "name": "Flowers",
+    "description": "Black and White Flower Outside / Cactus Inside"
+  },
+  {
+    "id": "2",
+    "price": 19.99,
+    "name": "Buffalo Plaid",
+    "description": "Buffalo Plaid outside / White Inside"
+  },
+  {
+    "id": "3",
+    "price": 19.99,
+    "name": "RB Plaid",
+    "description": "Red and Black Plaid Outside / White Inside"
+  },
+  {
+    "id": "4",
+    "price": 19.99,
+    "name": "Diamonds",
+    "description": "Green and Blue Diamond Outside / Purple Inside"
+  },
+  {
+    "id": "5",
+    "price": 19.99,
+    "name": "Lightning McQueen",
+    "description": "Lightning McQueen Outside / Green Plaid Inside"
+  },
+  {
+    "id": "6",
+    "price": 19.99,
+    "name": "Red Plaid",
+    "description": "Red Plaid Outside / White Inside"
+  },
+  {
+    "id": "7",
+    "price": 19.99,
+    "name": "Cars",
+    "description": "Cars Themed Outside / Cars Themed Inside"
+  },
+  {
+    "id": "8",
+    "price": 19.99,
+    "name": "Anchors",
+    "description": "Yellow and White Anchor Outside / Red Inside"
+  },
+  {
+    "id": "9",
+    "price": 19.99,
+    "name": "Black Stripes",
+    "description": "Black and White Stripped Outside / White Inside"
+  },
+  {
+    "id": "10",
+    "price": 19.99,
+    "name": "Funky Feathers",
+    "description": "Feathery Look on the Outside / Royal Blue Inside"
+  }
+]
