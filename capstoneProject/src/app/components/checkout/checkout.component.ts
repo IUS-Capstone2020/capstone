@@ -16,7 +16,7 @@ interface ICartItemWithProduct extends CartItem {
 
 @Component({
   selector: "app-checkout",
-  styleUrls: ["./checkout.component.scss"],
+  styleUrls: ["./checkout.component.css"],
   templateUrl: "./checkout.component.html"
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
