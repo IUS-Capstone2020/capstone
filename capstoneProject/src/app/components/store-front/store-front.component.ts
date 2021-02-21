@@ -8,7 +8,7 @@ import { Observer } from "rxjs/Observer";
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "app-store-front",
-  styleUrls: ["./store-front.component.scss"],
+  styleUrls: ["./store-front.component.css"],
   templateUrl: "./store-front.component.html"
 })
 export class StoreFrontComponent implements OnInit {
