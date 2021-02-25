@@ -1,9 +1,9 @@
 
-import {map} from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
-import "rxjs/add/operator/map";
 import { Observable } from "rxjs";
+import "rxjs/add/operator/map";
+import {map} from "rxjs/operators";
 import { DeliveryOption } from "../models/delivery-option.model";
 import { CachcingServiceBase } from "./caching.service";
 

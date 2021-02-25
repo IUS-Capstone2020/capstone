@@ -25,9 +25,11 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public cartItems: ICartItemWithProduct[];
   public itemCount: number;
   public payPalConfig?: IPayPalConfig;
+  public grossTotal: number;
   private products: Product[];
   private cartSubscription: Subscription;
   private success: boolean;
+  private ShoppingCart: ShoppingCart;
 
   public constructor(private productsService: ProductsDataService,
                      private deliveryOptionService: DeliveryOptionsDataService,
@@ -65,6 +67,12 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.shoppingCartService.empty();
   }
 
+  public getGrossTotal(): number {
+    this.cart.subscribe((ShoppingCart) => this.ShoppingCart = ShoppingCart);
+    this.grossTotal = this.ShoppingCart.grossTotal;
+    return this.grossTotal;
+  }
+
   public setDeliveryOption(option: DeliveryOption): void {
     this.shoppingCartService.setDeliveryOption(option);
   }
@@ -79,11 +87,11 @@ export class CheckoutComponent implements OnInit, OnDestroy {
           {
             amount: {
               currency_code: "USD",
-              value: "9.99",
+              value: this.getGrossTotal().toString(),
               breakdown: {
                 item_total: {
                   currency_code: "USD",
-                  value: "9.99"
+                  value: this.getGrossTotal().toString()
                 }
               }
             },
@@ -91,10 +99,10 @@ export class CheckoutComponent implements OnInit, OnDestroy {
               {
                 name: "Enterprise Subscription",
                 quantity: "1",
-                category: "DIGITAL_GOODS",
+                category: "PHYSICAL_GOODS",
                 unit_amount: {
                   currency_code: "USD",
-                  value: "9.99",
+                  value: this.getGrossTotal().toString(),
                 },
               }
             ]

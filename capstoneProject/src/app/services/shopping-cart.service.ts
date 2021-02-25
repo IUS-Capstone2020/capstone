@@ -72,6 +72,16 @@ export class ShoppingCartService {
     this.dispatch(cart);
   }
 
+  public retrieve(): ShoppingCart {
+    const cart = new ShoppingCart();
+    const storedCart = this.storage.getItem(CART_KEY);
+    if (storedCart) {
+      cart.updateFrom(JSON.parse(storedCart));
+    }
+
+    return cart;
+  }
+
   private calculateCart(cart: ShoppingCart): void {
     cart.itemsTotal = cart.items
                           .map((item) => item.quantity * this.products.find((p) => p.id === item.productId).price)
@@ -80,16 +90,6 @@ export class ShoppingCartService {
                           this.deliveryOptions.find((x) => x.id === cart.deliveryOptionId).price :
                           0;
     cart.grossTotal = cart.itemsTotal + cart.deliveryTotal;
-  }
-
-  private retrieve(): ShoppingCart {
-    const cart = new ShoppingCart();
-    const storedCart = this.storage.getItem(CART_KEY);
-    if (storedCart) {
-      cart.updateFrom(JSON.parse(storedCart));
-    }
-
-    return cart;
   }
 
   private save(cart: ShoppingCart): void {
