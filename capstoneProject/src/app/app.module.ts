@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { BrowserModule } from "@angular/platform-browser";
+import { NgxPayPalModule } from "ngx-paypal";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app.routing";
 import { CheckoutComponent } from "./components/checkout/checkout.component";
@@ -24,6 +25,7 @@ import { LocalStorageService, StorageService } from "./services/storage.service"
     OrderConfirmationComponent
   ],
   imports: [
+    NgxPayPalModule,
     BrowserModule,
     FormsModule,
     HttpModule,

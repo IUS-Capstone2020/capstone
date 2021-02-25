@@ -1,8 +1,10 @@
+
+import {map} from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { Product } from "app/models/product.model";
 import "rxjs/add/operator/map";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 import { CachcingServiceBase } from "./caching.service";
 
 let count = 0;
@@ -19,13 +21,13 @@ export class ProductsDataService extends CachcingServiceBase {
     return this.cache<Product[]>(() => this.products,
                                  (val: Observable<Product[]>) => this.products = val,
                                  () => this.http
-                                           .get("./assets/products.json")
-                                           .map((response) => response.json()
+                                           .get("./assets/products.json").pipe(
+                                           map((response) => response.json()
                                                                       .map((item) => {
                                                                         let model = new Product();
                                                                         model.updateFrom(item);
                                                                         return model;
-                                                                      })));
+                                                                      }))));
 
   }
 }
