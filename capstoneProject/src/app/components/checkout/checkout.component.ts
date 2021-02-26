@@ -8,6 +8,7 @@ import {ProductsDataService} from "app/services/products.service";
 import {ShoppingCartService} from "app/services/shopping-cart.service";
 import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
 import {Observable, Subscription} from "rxjs";
+import {ITransactionItem} from "../../models/ITransactionItem";
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -23,6 +24,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public deliveryOptions: Observable<DeliveryOption[]>;
   public cart: Observable<ShoppingCart>;
   public cartItems: ICartItemWithProduct[];
+  public payPalCartItems: ITransactionItem[];
   public itemCount: number;
   public payPalConfig?: IPayPalConfig;
   public grossTotal: number;
@@ -30,6 +32,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   private cartSubscription: Subscription;
   private success: boolean;
   private ShoppingCart: ShoppingCart;
+  private deliveryTotal: number;
 
   public constructor(private productsService: ProductsDataService,
                      private deliveryOptionService: DeliveryOptionsDataService,
@@ -44,6 +47,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
       this.productsService.all().subscribe((products) => {
         this.products = products;
+        this.payPalCartItems = cart.ppItems;
         this.cartItems = cart.items
           .map((item) => {
             const product = this.products.find((p) => p.id === item.productId);
@@ -67,14 +71,35 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.shoppingCartService.empty();
   }
 
+  public setDeliveryOption(option: DeliveryOption): void {
+    this.shoppingCartService.setDeliveryOption(option);
+  }
+
   public getGrossTotal(): number {
     this.cart.subscribe((ShoppingCart) => this.ShoppingCart = ShoppingCart);
     this.grossTotal = this.ShoppingCart.grossTotal;
     return this.grossTotal;
   }
 
-  public setDeliveryOption(option: DeliveryOption): void {
-    this.shoppingCartService.setDeliveryOption(option);
+  public getPayPalItems(): ITransactionItem[] {
+    this.cart.subscribe((ShoppingCart) => this.ShoppingCart = ShoppingCart);
+    this.payPalCartItems = this.ShoppingCart.ppItems;
+
+    this.payPalCartItems.push({
+      name: "Shipping",
+      quantity: "1",
+      unit_amount: {
+        currency_code: "USD",
+        value: this.getDeliveryTotal().toString(),
+      }
+    });
+    return this.payPalCartItems;
+  }
+
+  public getDeliveryTotal(): number {
+    this.cart.subscribe((ShoppingCart) => this.ShoppingCart = ShoppingCart);
+    this.deliveryTotal = this.ShoppingCart.deliveryTotal;
+    return this.deliveryTotal;
   }
 
   private initConfig(): void {
@@ -95,17 +120,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
                 }
               }
             },
-            items: [
-              {
-                name: "Enterprise Subscription",
-                quantity: "1",
-                category: "PHYSICAL_GOODS",
-                unit_amount: {
-                  currency_code: "USD",
-                  value: this.getGrossTotal().toString(),
-                },
-              }
-            ]
+            items: this.getPayPalItems(),
           }
         ]
       },
