@@ -1,5 +1,7 @@
+
+import {share} from 'rxjs/operators';
 import "rxjs/add/operator/share";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 
 export abstract class CachcingServiceBase {
   protected cache<T>(getter: () => Observable<T>,
@@ -9,7 +11,7 @@ export abstract class CachcingServiceBase {
     if (cached !== undefined) {
       return cached;
     } else {
-      const val = retreive().share();
+      const val = retreive().pipe(share());
       setter(val);
       return val;
     }

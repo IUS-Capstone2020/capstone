@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 import { StorageService } from "app/services/storage.service";
-import { Observable } from "rxjs/Observable";
-import { Observer } from "rxjs/Observer";
+import { Observable ,  Observer } from "rxjs";
 import { CartItem } from "../models/cart-item.model";
 import { DeliveryOption } from "../models/delivery-option.model";
+import { ITransactionItem } from "../models/ITransactionItem";
 import { Product } from "../models/product.model";
 import { ShoppingCart } from "../models/shopping-cart.model";
-import { DeliveryOptionsDataService } from "../services/delivery-options.service";
-import { ProductsDataService } from "../services/products.service";
+import { DeliveryOptionsDataService } from "./delivery-options.service";
+import { ProductsDataService } from "./products.service";
+import {IUnitAmount} from "../models/IUnitAmount";
 
 const CART_KEY = "cart";
 
@@ -42,14 +43,33 @@ export class ShoppingCartService {
   public addItem(product: Product, quantity: number): void {
     const cart = this.retrieve();
     let item = cart.items.find((p) => p.productId === product.id);
+    let ppItem = cart.ppItems.find((p) => p.name === product.name);
     if (item === undefined) {
       item = new CartItem();
+      ppItem = new ITransactionItem();
+
       item.productId = product.id;
+      ppItem.name = product.name;
+
+      ppItem.unit_amount = new IUnitAmount();
+      ppItem.unit_amount.value = product.price.toString();
+      ppItem.unit_amount.currency_code = "USD";
+
       cart.items.push(item);
+      cart.ppItems.push(ppItem);
     }
 
-    item.quantity += quantity;
+    if (quantity === -1) {
+      item.quantity = 0;
+      ppItem.quantity = "0";
+    } else {
+      item.quantity = 1;
+      ppItem.quantity = "1";
+    }
+
     cart.items = cart.items.filter((cartItem) => cartItem.quantity > 0);
+    // tslint:disable-next-line:no-shadowed-variable
+    cart.ppItems = cart.ppItems.filter((ppItem) => Number(ppItem.quantity) > 0);
     if (cart.items.length === 0) {
       cart.deliveryOptionId = undefined;
     }
@@ -73,6 +93,16 @@ export class ShoppingCartService {
     this.dispatch(cart);
   }
 
+  public retrieve(): ShoppingCart {
+    const cart = new ShoppingCart();
+    const storedCart = this.storage.getItem(CART_KEY);
+    if (storedCart) {
+      cart.updateFrom(JSON.parse(storedCart));
+    }
+
+    return cart;
+  }
+
   private calculateCart(cart: ShoppingCart): void {
     cart.itemsTotal = cart.items
                           .map((item) => item.quantity * this.products.find((p) => p.id === item.productId).price)
@@ -81,16 +111,6 @@ export class ShoppingCartService {
                           this.deliveryOptions.find((x) => x.id === cart.deliveryOptionId).price :
                           0;
     cart.grossTotal = cart.itemsTotal + cart.deliveryTotal;
-  }
-
-  private retrieve(): ShoppingCart {
-    const cart = new ShoppingCart();
-    const storedCart = this.storage.getItem(CART_KEY);
-    if (storedCart) {
-      cart.updateFrom(JSON.parse(storedCart));
-    }
-
-    return cart;
   }
 
   private save(cart: ShoppingCart): void {
