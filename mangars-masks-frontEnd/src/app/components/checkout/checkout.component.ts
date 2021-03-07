@@ -77,7 +77,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   public getGrossTotal(): number {
     this.cart.subscribe((ShoppingCart) => this.ShoppingCart = ShoppingCart);
-    this.grossTotal = this.ShoppingCart.grossTotal;
+    this.grossTotal = Math.round((this.ShoppingCart.grossTotal + Number.EPSILON) * 100) / 100 ;
     return this.grossTotal;
   }
 
