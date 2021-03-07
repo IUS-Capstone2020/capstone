@@ -85,6 +85,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.cart.subscribe((ShoppingCart) => this.ShoppingCart = ShoppingCart);
     this.payPalCartItems = this.ShoppingCart.ppItems;
 
+    console.log("pushing paypal cart shipping");
     this.payPalCartItems.push({
       name: "Shipping",
       quantity: "1",
@@ -93,6 +94,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         value: this.getDeliveryTotal().toString(),
       }
     });
+    console.log("finished pushing paypal cart shipping");
     return this.payPalCartItems;
   }
 
