@@ -149,7 +149,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         this.success = true;
         this.cartItems.forEach( (element) => {
           this.restService.deleteMask(element.product.id).subscribe((value: Product) => {
-            console.log("deleted mask: " + element.product.id);
+            console.log("deleted mask name: " + element.product.name);
           });
         });
         this.zone.run(() => {
