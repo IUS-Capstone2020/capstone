@@ -1,4 +1,6 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component, NgZone, OnDestroy, OnInit} from "@angular/core";
+import {Http} from "@angular/http";
+import {Router} from "@angular/router";
 import {CartItem} from "app/models/cart-item.model";
 import {DeliveryOption} from "app/models/delivery-option.model";
 import {Product} from "app/models/product.model";
@@ -8,6 +10,7 @@ import {ProductsDataService} from "app/services/products.service";
 import {ShoppingCartService} from "app/services/shopping-cart.service";
 import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
 import {Observable, Subscription} from "rxjs";
+import {RestService} from "../../app.service";
 import {ITransactionItem} from "../../models/ITransactionItem";
 
 interface ICartItemWithProduct extends CartItem {
@@ -36,7 +39,10 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   public constructor(private productsService: ProductsDataService,
                      private deliveryOptionService: DeliveryOptionsDataService,
-                     private shoppingCartService: ShoppingCartService) {
+                     private shoppingCartService: ShoppingCartService,
+                     private restService: RestService,
+                     private router: Router,
+                     private zone: NgZone) {
   }
 
   public ngOnInit(): void {
@@ -139,8 +145,16 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         this.ngOnDestroy();
       },
       onClientAuthorization: (data) => {
-        console.log("onClientAuthorization - you should probably inform your server about completed transaction at this point", data);
+        console.log("onClientAuthorization - inform your server about completed transaction", data);
         this.success = true;
+        this.cartItems.forEach( (element) => {
+          this.restService.deleteMask(element.product.id).subscribe((value: Product) => {
+            console.log("deleted mask: " + element.product.id);
+          });
+        });
+        this.zone.run(() => {
+          this.router.navigate(["/confirmed"]);
+        });
       },
       onCancel: (data, actions) => {
         console.log("OnCancel", data, actions);

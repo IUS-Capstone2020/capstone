@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "ng build --prod --aot && gulp",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "start:https": "ng serve --ssl true --ssl-key ./dev_cert.key --ssl-cert ./dev_cert.crt",
     "test": "ng test --watch false",
     "e2e": "ng e2e"

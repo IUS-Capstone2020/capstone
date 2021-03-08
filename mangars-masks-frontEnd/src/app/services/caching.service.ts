@@ -1,7 +1,7 @@
 
-import {share} from 'rxjs/operators';
-import "rxjs/add/operator/share";
 import { Observable } from "rxjs";
+import "rxjs/add/operator/share";
+import {share} from "rxjs/operators";
 
 export abstract class CachcingServiceBase {
   protected cache<T>(getter: () => Observable<T>,
