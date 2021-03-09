@@ -8,11 +8,10 @@
   },
   "scripts": {
     "build": "ng build --prod --aot && gulp",
-    "start": "node server.js",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "start:https": "ng serve --ssl true --ssl-key ./dev_cert.key --ssl-cert ./dev_cert.crt",
     "test": "ng test --watch false",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --aot --prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
