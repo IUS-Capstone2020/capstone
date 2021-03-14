@@ -1,6 +1,0 @@
-{
-  "/api/v1": {
-    "target": "https://mangarsmasksapi.herokuapp.com",
-    "secure": false
-  }
-}
