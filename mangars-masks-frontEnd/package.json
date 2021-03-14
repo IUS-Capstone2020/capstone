@@ -28,15 +28,18 @@
     "@angular/platform-browser-dynamic": "^6.1.10",
     "@angular/platform-server": "^6.1.10",
     "@angular/router": "^6.1.10",
+    "@okta/okta-angular": "^3.0.1",
     "core-js": "^2.4.1",
+    "express": "^4.17.1",
     "intl": "^1.2.5",
     "ngx-paypal": "^5.0.0",
     "ngx-swiper-wrapper": "^10.0.0",
     "node-sass": "^4.5.2",
+    "path": "^0.12.7",
     "rxjs": "^6.6.6",
     "rxjs-compat": "^6.0.0-rc.0",
-    "zone.js": "^0.8.4",
-    "typescript": "2.9.2"
+    "typescript": "2.9.2",
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
@@ -46,6 +49,7 @@
     "@types/node": "~6.0.60",
     "@types/sinon": "^2.2.1",
     "codelyzer": "~2.0.0",
+    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",
