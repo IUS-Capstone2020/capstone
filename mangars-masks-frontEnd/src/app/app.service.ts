@@ -4,7 +4,9 @@ import {Observable, of} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
 import {Product} from "./models/product.model";
 
-const endpoint = "http://localhost:8080/api/v1/";
+/*const endpoint = "http://localhost:8080/api/v1/";*/
+const endpoint = "https://mangarsmasks.herokuapp.com/api/v1/";
+
 const httpOptions = {
   headers: new Headers({
     "Content-Type": "application/json"
