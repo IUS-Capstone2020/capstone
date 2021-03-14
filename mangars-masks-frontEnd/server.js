@@ -1,17 +1,8 @@
-var express = require('express');
-
-var app = express();
-
-app.use(express.static(__dirname + '/mangars-masks-frontEnd'));
-app.get('/assets', function(req,res){
-  res.sendFile(__dirname + '/mangars-masks-frontEnd/assets');
-} );
-app.get('/*', function (req, res){
-  res.sendFile(__dirname + '/mangars-masks-front-end');
-} );
-
-var port = process.env.PORT || 8080;
-app.listen(port, function(){
-  console.log('server running on port ' + port + '.');
-
-})
+const express = require('express');
+const path = require('path');
+const app = express();
+app.use(express.static(__dirname + '/dist/angular-simple-shopping-cart'));
+app.get('/*', function(req,res) {
+  res.sendFile(path.join(__dirname+
+    '/dist/angular-simple-shopping-cart/index.html'));});
+app.listen(process.env.PORT || 8080)
