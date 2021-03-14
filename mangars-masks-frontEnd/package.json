@@ -7,11 +7,14 @@
     "npm": ">= 3.10.8"
   },
   "scripts": {
-    "build": "ng build --prod --aot && gulp",
-    "start": "ng serve --proxy-config proxy.conf.json",
-    "start:https": "ng serve --ssl true --ssl-key ./dev_cert.key --ssl-cert ./dev_cert.crt",
-    "test": "ng test --watch false",
-    "e2e": "ng e2e"
+    "ng": "ng",
+    "heroku-postbuild": "ng build --prod",
+    "build": "ng build",
+    "start": "node server.js --proxy-config proxy.conf.json",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --prod"
   },
   "private": true,
   "dependencies": {
@@ -32,7 +35,8 @@
     "node-sass": "^4.5.2",
     "rxjs": "^6.6.6",
     "rxjs-compat": "^6.0.0-rc.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "typescript": "2.9.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
@@ -42,9 +46,6 @@
     "@types/node": "~6.0.60",
     "@types/sinon": "^2.2.1",
     "codelyzer": "~2.0.0",
-    "gulp": "^3.9.1",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-replace": "^0.5.4",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",
