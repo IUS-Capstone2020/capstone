@@ -11,7 +11,7 @@ import java.util.List;
 /*
 @CrossOrigin(origins = {"http://localhost:4200"})
 */
-@CrossOrigin(origins = {"https://sleepy-sands-09473.herokuapp.com"})
+@CrossOrigin(origins = {"https://iuscapstoneproject2020.herokuapp.com/"})
 @RequestMapping("api/v1/")
 public class MaskController {
 	
