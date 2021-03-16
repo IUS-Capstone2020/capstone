@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-/*
-@CrossOrigin(origins = {"http://localhost:4200"})
-*/
-@CrossOrigin(origins = {"https://iuscapstoneproject2020.herokuapp.com/"})
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("api/v1/")
 public class MaskController {
 	
