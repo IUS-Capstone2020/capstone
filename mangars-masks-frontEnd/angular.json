@@ -48,6 +48,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "proxyConfig": "proxy.conf.json",
             "browserTarget": "cmc-markets-code-test:build"
           },
           "configurations": {

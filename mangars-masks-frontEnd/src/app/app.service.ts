@@ -4,10 +4,13 @@ import {Observable, of} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
 import {Product} from "./models/product.model";
 
-const endpoint = "http://localhost:8080/api/v1/";
+/*const endpoint = "http://localhost:8080/api/v1/";*/
+const endpoint = "https://mangarsmasksapi.herokuapp.com/api/v1/";
+
 const httpOptions = {
   headers: new Headers({
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization": "Basic " + btoa("admin:password")
   })
 };
 
@@ -20,7 +23,7 @@ export class RestService {
   }
 
   public getMasks(): Observable<Product[]> {
-    return this.http.get(endpoint + "masks").pipe(
+    return this.http.get(endpoint + "masks", httpOptions).pipe(
       map((response) => response.json()
         .map((item) => {
           let model = new Product();
@@ -30,7 +33,7 @@ export class RestService {
   }
 
   public getMask(id): Observable<Product> {
-    return this.http.get(endpoint + "masks/" + id).pipe(
+    return this.http.get(endpoint + "masks/" + id, httpOptions).pipe(
       map((response) => response.json()
         .map((item) => {
           let model = new Product();
@@ -65,7 +68,7 @@ export class RestService {
   }
 
   public deleteMask(id): Observable<Product> {
-    return this.http.delete(endpoint + "masks/" + id).pipe(
+    return this.http.delete(endpoint + "masks/" + id, httpOptions).pipe(
       tap((_) => console.log(`deleted mask id=${id}`)),
       catchError(this.handleError<any>("deleteMask")));
   }
