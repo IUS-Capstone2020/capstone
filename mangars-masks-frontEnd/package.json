@@ -34,7 +34,7 @@
     "intl": "^1.2.5",
     "ngx-paypal": "^5.0.0",
     "ngx-swiper-wrapper": "^10.0.0",
-    "node-sass": "^4.5.2",
+    "node-sass": "^7.0.0",
     "path": "^0.12.7",
     "rxjs": "^6.6.6",
     "rxjs-compat": "^6.0.0-rc.0",
